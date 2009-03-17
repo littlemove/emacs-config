@@ -91,6 +91,25 @@ exec-to-string command, but it works and seems fast"
       (list 'mumamo-after-change-major-mode-hook 'dired-mode-hook 'ruby-mode-hook
 	    'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
 
+;;;; Hide/show blocks of code on ruby mode
+(defun ruby-custom-setup ()
+  (add-to-list 'hs-special-modes-alist
+               '(ruby-mode "\\(def\\|do\\)""end""#"
+                           (lambda (arg) (ruby-end-of-block))
+                           nil
+                           ))
+
+  (local-set-key (kbd "C-c <right>") 'hs-show-block)
+  (local-set-key (kbd "C-c <left>")  'hs-hide-block)
+  (local-set-key (kbd "C-c <up>")    'hs-hide-all)
+  (local-set-key (kbd "C-c <down>")  'hs-show-all)
+
+  (hs-minor-mode t)
+  )
+
+(add-hook 'ruby-mode-hook 'ruby-custom-setup)
+
+
 ;; TODO: set up ri
 ;; TODO: electric
 
