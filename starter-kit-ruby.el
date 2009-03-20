@@ -88,8 +88,14 @@ exec-to-string command, but it works and seems fast"
 
 ;; Rinari (Minor Mode for Ruby On Rails)
 (setq rinari-major-modes
-      (list 'mumamo-after-change-major-mode-hook 'dired-mode-hook 'ruby-mode-hook
-	    'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
+      (list 'rhtml-mode-hook 'dired-mode-hook 'ruby-mode-hook 'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
+
+(add-to-list 'load-path "~/.emacs.d/elpa-to-submit/rhtml")
+(require 'rhtml-mode)
+(add-hook 'rhtml-mode-hook
+          (lambda ()
+            (pabbrev-mode 0)
+            (rinari-launch)))
 
 ;;;; Hide/show blocks of code on ruby mode
 (defun ruby-custom-setup ()
