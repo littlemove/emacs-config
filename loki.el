@@ -9,3 +9,8 @@
   (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
 
 (global-set-key (kbd "<f11>")  'full-screen-toggle)
+
+(require 'yasnippet) ;; not yasnippet-bundle
+;;(add-to-list 'yas/extra-mode-hooks 'html-mode-hook)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/elpa-to-submit/snippets/")
