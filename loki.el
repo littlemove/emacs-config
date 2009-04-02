@@ -2,6 +2,8 @@
 ;;(load-file "~/.emacs.d/color-themes/zenburn.el")
 (color-theme-zenburn)
 
+(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 100)
+
 ;; Toogle full-screen mode (needs wmctrl installed)
 (defun full-screen-toggle ()
   "toggle full-screen mode"
