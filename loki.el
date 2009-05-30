@@ -1,5 +1,5 @@
 ;;(require 'color-theme)
-;;(load-file "~/.emacs.d/color-themes/zenburn.el")
+(load-file "~/.emacs.d/elpa-to-submit/zenburn.el")
 (color-theme-zenburn)
 
 (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 100)
