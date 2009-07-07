@@ -63,4 +63,7 @@
      (text-cursor ((t (:background "yellow" :foreground "black"))))
      (toolbar ((t (nil))))
      (underline ((nil (:underline nil))))
-     (zmacs-region ((t (:background "snow" :foreground "ble")))))))
+     (zmacs-region ((t (:background "snow" :foreground "ble"))))     
+     (erb-out-delim-face ((t (:background "black" :foreground "#aaffff"))))
+     (erb-exec-face ((t (:background "black"))))
+     (erb-out-face ((t (:inherit erb-face :background "black")))))))
