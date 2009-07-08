@@ -7,7 +7,7 @@
                                    'inf-ruby
                                    'js2-mode
                                    'css-mode
-                                   'nxml
+                                   ;; 'nxml
                                    'gist
                                    'paredit)
   "Libraries that should be installed by default.")
@@ -39,5 +39,9 @@ just have to assume it's online."
 (when (esk-online?)
   (unless package-archive-contents (package-refresh-contents))
   (starter-kit-elpa-install))
+
+;; Workaround for an ELPA bug that people are reporting but I've been
+;; unable to reproduce:
+(autoload 'paredit-mode "paredit")
 
 (provide 'starter-kit-elpa)
