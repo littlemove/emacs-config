@@ -2,7 +2,7 @@
 (load-file "~/.emacs.d/elpa-to-submit/twilight.el")
 (color-theme-twilight)
 
-(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 100)
+;;(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 100)
 
 ;; Toogle full-screen mode (needs wmctrl installed)
 (defun full-screen-toggle ()
