@@ -33,12 +33,12 @@
   (pcomplete-here (pcmpl-rake-tasks)))
 
 (defun pcmpl-rake-tasks ()
-   "Return a list of all the rake tasks defined in the current
+  "Return a list of all the rake tasks defined in the current
 projects.  I know this is a hack to put all the logic in the
 exec-to-string command, but it works and seems fast"
-   (delq nil (mapcar '(lambda(line)
-			(if (string-match "rake \\([^ ]+\\)" line) (match-string 1 line)))
-		     (split-string (shell-command-to-string "rake -T") "[\n]"))))
+  (delq nil (mapcar '(lambda(line)
+                       (if (string-match "rake \\([^ ]+\\)" line) (match-string 1 line)))
+                    (split-string (shell-command-to-string "rake -T") "[\n]"))))
 
 (defun rake (task)
   (interactive (list (completing-read "Rake (default: default): "
@@ -60,69 +60,42 @@ exec-to-string command, but it works and seems fast"
 
 ;;; Flymake
 
+(defun flymake-ruby-init ()
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                     'flymake-create-temp-inplace))
+         (local-file (file-relative-name
+                      temp-file
+                      (file-name-directory buffer-file-name))))
+    ;; Invoke ruby with '-c' to get syntax checking
+    (list "ruby" (list "-c" local-file))))
+
+(defun flymake-ruby-enable ()
+  (when (and buffer-file-name
+             (file-writable-p
+              (file-name-directory buffer-file-name))
+             (file-writable-p buffer-file-name)
+             (if (fboundp 'tramp-list-remote-buffers)
+                 (not (subsetp
+                       (list (current-buffer))
+                       (tramp-list-remote-buffers)))
+               t))
+    (local-set-key (kbd "C-c d")
+                   'flymake-display-err-menu-for-current-line)
+    (flymake-mode t)))
+
 (eval-after-load 'ruby-mode
   '(progn
      (require 'flymake)
-
-     ;; Invoke ruby with '-c' to get syntax checking
-     (defun flymake-ruby-init ()
-       (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                          'flymake-create-temp-inplace))
-              (local-file (file-relative-name
-                           temp-file
-                           (file-name-directory buffer-file-name))))
-         (list "ruby" (list "-c" local-file))))
-
      (push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
      (push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-
      (push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3)
            flymake-err-line-patterns)
-
-     (add-hook 'ruby-mode-hook
-               (lambda ()
-                 (when (and buffer-file-name
-                            (file-writable-p
-                             (file-name-directory buffer-file-name))
-                            (file-writable-p buffer-file-name)
-                            (if (fboundp 'tramp-list-remote-buffers)
-                                (not (subsetp
-                                      (list (current-buffer))
-                                      (tramp-list-remote-buffers)))
-                              t))
-                   (local-set-key (kbd "C-c d")
-                                  'flymake-display-err-menu-for-current-line)
-                   (flymake-mode t))))))
+     (add-hook 'ruby-mode-hook 'flymake-ruby-enable)))
 
 ;; Rinari (Minor Mode for Ruby On Rails)
 (setq rinari-major-modes
-      (list 'rhtml-mode-hook 'dired-mode-hook 'ruby-mode-hook 'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
-
-(add-to-list 'load-path "~/.emacs.d/elpa-to-submit/rhtml")
-(require 'rhtml-mode)
-(add-hook 'rhtml-mode-hook
-          (lambda ()
-            (pabbrev-mode 0)
-            (rinari-launch)))
-
-;;;; Hide/show blocks of code on ruby mode
-(defun ruby-custom-setup ()
-  (add-to-list 'hs-special-modes-alist
-               '(ruby-mode "\\(def\\|do\\)""end""#"
-                           (lambda (arg) (ruby-end-of-block))
-                           nil
-                           ))
-
-  (local-set-key (kbd "C-c <right>") 'hs-show-block)
-  (local-set-key (kbd "C-c <left>")  'hs-hide-block)
-  (local-set-key (kbd "C-c <up>")    'hs-hide-all)
-  (local-set-key (kbd "C-c <down>")  'hs-show-all)
-
-  (hs-minor-mode t)
-  )
-
-(add-hook 'ruby-mode-hook 'ruby-custom-setup)
-
+      (list 'mumamo-after-change-major-mode-hook 'dired-mode-hook 'ruby-mode-hook
+            'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
 
 ;; TODO: set up ri
 ;; TODO: electric
