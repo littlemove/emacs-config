@@ -7,3 +7,16 @@
 (add-to-list 'yas/extra-mode-hooks 'html-mode-hook)
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/elpa-to-submit/snippets/")
+
+;; MacOS X specific stuff
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+
+(load-file "~/.emacs.d/diego/ruby.el")
+
+(add-to-list 'load-path "~/.emacs.d/diego/emacs-skype/")
+(require 'skype)
+(setq skype--my-user-handle "l0k1_skype")
+
