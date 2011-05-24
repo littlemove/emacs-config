@@ -1,3 +1,9 @@
+(push "/usr/local/bin" exec-path)
+
+(setq ispell-program-name "aspell")
+(setq ispell-list-command "list")
+(global-set-key (kbd "<C-M-tab>") 'flyspell-auto-correct-word)
+
 (load-file "~/.emacs.d/elpa-to-submit/twilight.el")
 (color-theme-twilight)
 
