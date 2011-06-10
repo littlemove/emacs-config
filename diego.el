@@ -20,10 +20,12 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 
-(load-file "~/.emacs.d/diego/ruby.el")
-
 (put 'downcase-region 'disabled nil)
 
-(add-to-list 'load-path "~/.emacs.d/diego/emacs-skype/")
-(require 'skype)
-(setq skype--my-user-handle "l0k1_skype")
+;; Load Ruby customizations
+(load-file "~/.emacs.d/diego/ruby.el")
+
+;; FIX
+;; (add-to-list 'load-path "~/.emacs.d/diego/emacs-skype/")
+;; (require 'skype)
+;; (setq skype--my-user-handle "l0k1_skype")

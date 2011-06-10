@@ -1,0 +1,3 @@
+[submodule "elpa-to-submit/rinari"]
+	path = elpa-to-submit/rinari
+	url = git://github.com/eschulte/rinari.git

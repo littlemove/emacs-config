@@ -1,3 +1,7 @@
+;; Rinari
+(add-to-list 'load-path "~/.emacs.d/elpa-to-submit/rinari")
+(require 'rinari)
+
 ;; rhtml-mode
 (add-to-list 'load-path "~/.emacs.d/elpa-to-submit/rhtml")
 (require 'rhtml-mode)
