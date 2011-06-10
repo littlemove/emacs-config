@@ -6,7 +6,11 @@
 (add-to-list 'load-path "~/.emacs.d/elpa-to-submit/rhtml")
 (require 'rhtml-mode)
 (add-hook 'rhtml-mode-hook
-         (lambda () (rinari-launch)))
+          (lambda () (rinari-launch)))
+
+;; Rspec-mode
+(add-to-list 'load-path "~/.emacs.d/diego/rspec-mode")
+(require 'rspec-mode)
 
 ;;;; Hide/show blocks of code on ruby mode
 (defun ruby-custom-setup ()
