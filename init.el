@@ -20,60 +20,73 @@
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
-;; Load up ELPA, the package manager
+;; to move
+(push "/usr/local/bin" exec-path)
 
-(add-to-list 'load-path dotfiles-dir)
+(set-face-attribute 'default nil :family "Anonymous Pro" :height 150)
 
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
+;; MacOS X specific stuff
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
 
-(setq autoload-file (concat dotfiles-dir "loaddefs.el"))
-(setq package-user-dir (concat dotfiles-dir "elpa"))
-(setq custom-file (concat dotfiles-dir "custom.el"))
+(put 'downcase-region 'disabled nil)
 
-(require 'package)
-(dolist (source '(("technomancy" . "http://repo.technomancy.us/emacs/")
-                  ("elpa" . "http://tromey.com/elpa/")))
-  (add-to-list 'package-archives source t))
-(package-initialize)
-(require 'starter-kit-elpa)
+;; el-get setup
+
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil t)
+  (url-retrieve
+   "https://github.com/dimitri/el-get/raw/master/el-get-install.el"
+   (lambda (s)
+     (end-of-buffer)
+     (eval-print-last-sexp))))
+
+(setq el-get-sources '(color-theme yasnippet))
+
+(el-get 'sync el-get-sources)
+(el-get 'wait)
+
+;; Theme, fonts, ...
+(load-file "~/.emacs.d/elpa-to-submit/twilight.el")
+(color-theme-twilight)
 
 ;; These should be loaded on startup rather than autoloaded on demand
 ;; since they are likely to be used in every session
 
-(require 'cl)
-(require 'saveplace)
-(require 'ffap)
-(require 'uniquify)
-(require 'ansi-color)
-(require 'recentf)
+;; (require 'cl)
+;; (require 'saveplace)
+;; (require 'ffap)
+;; (require 'uniquify)
+;; (require 'ansi-color)
+;; (require 'recentf)
 
-;; backport some functionality to Emacs 22 if needed
-(require 'dominating-file)
+;; ;; Load up starter kit customizations
 
-;; Load up starter kit customizations
+;; (require 'starter-kit-defuns)
+;; (require 'starter-kit-bindings)
+;; (require 'starter-kit-misc)
+;; (require 'starter-kit-registers)
+;; (require 'starter-kit-eshell)
+;; (require 'starter-kit-lisp)
+;; (require 'starter-kit-perl)
+;; (require 'starter-kit-ruby)
+;; (require 'starter-kit-js)
 
-(require 'starter-kit-defuns)
-(require 'starter-kit-bindings)
-(require 'starter-kit-misc)
-(require 'starter-kit-registers)
-(require 'starter-kit-eshell)
-(require 'starter-kit-lisp)
-(require 'starter-kit-perl)
-(require 'starter-kit-ruby)
-(require 'starter-kit-js)
+;; (regen-autoloads)
+;; (load custom-file 'noerror)
 
-(regen-autoloads)
-(load custom-file 'noerror)
+;; ;; You can keep system- or user-specific customizations here
+;; (setq system-specific-config (concat dotfiles-dir system-name ".el")
+;;       user-specific-config (concat dotfiles-dir user-login-name ".el")
+;;       user-specific-dir (concat dotfiles-dir user-login-name))
+;; (add-to-list 'load-path user-specific-dir)
 
-;; You can keep system- or user-specific customizations here
-(setq system-specific-config (concat dotfiles-dir system-name ".el")
-      user-specific-config (concat dotfiles-dir user-login-name ".el")
-      user-specific-dir (concat dotfiles-dir user-login-name))
-(add-to-list 'load-path user-specific-dir)
-
-(if (file-exists-p system-specific-config) (load system-specific-config))
-(if (file-exists-p user-specific-config) (load user-specific-config))
-(if (file-exists-p user-specific-dir)
-  (mapc #'load (directory-files user-specific-dir nil ".*el$")))
+;; (if (file-exists-p system-specific-config) (load system-specific-config))
+;; (if (file-exists-p user-specific-config) (load user-specific-config))
+;; (if (file-exists-p user-specific-dir)
+;;   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
 
 ;;; init.el ends here
