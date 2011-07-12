@@ -20,6 +20,8 @@
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
+(add-to-list 'load-path dotfiles-dir)
+
 ;; to move
 (push "/usr/local/bin" exec-path)
 
@@ -44,7 +46,7 @@
      (end-of-buffer)
      (eval-print-last-sexp))))
 
-(setq el-get-sources '(color-theme yasnippet))
+(setq el-get-sources '(color-theme yasnippet ruby-electric rinari magit yaml-mode paredit rhtml-mode))
 
 (el-get 'sync el-get-sources)
 (el-get 'wait)
@@ -56,16 +58,16 @@
 ;; These should be loaded on startup rather than autoloaded on demand
 ;; since they are likely to be used in every session
 
-;; (require 'cl)
-;; (require 'saveplace)
-;; (require 'ffap)
-;; (require 'uniquify)
-;; (require 'ansi-color)
-;; (require 'recentf)
+(require 'cl)
+(require 'saveplace)
+(require 'ffap)
+(require 'uniquify)
+(require 'ansi-color)
+(require 'recentf)
 
 ;; ;; Load up starter kit customizations
 
-;; (require 'starter-kit-defuns)
+(require 'defuns)
 ;; (require 'starter-kit-bindings)
 ;; (require 'starter-kit-misc)
 ;; (require 'starter-kit-registers)
