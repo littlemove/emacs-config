@@ -68,7 +68,7 @@
 ;; ;; Load up starter kit customizations
 
 (require 'defuns)
-;; (require 'starter-kit-bindings)
+(require 'keybindings)
 ;; (require 'starter-kit-misc)
 ;; (require 'starter-kit-registers)
 ;; (require 'starter-kit-eshell)
