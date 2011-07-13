@@ -1,6 +1,6 @@
-;;; starter-kit-misc.el --- Things that don't fit anywhere else
+;;; misc.el --- Things that don't fit anywhere else
 ;;
-;; Part of the Emacs Starter Kit
+;; Most of them part of the Emacs Starter Kit
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
@@ -96,10 +96,10 @@
                                         (concat dotfiles-dir "backups")))))
 
 ;; nxhtml stuff
-(setq mumamo-chunk-coloring 'submode-colored
-      nxhtml-skip-welcome t
-      indent-region-mode t
-      rng-nxml-auto-validate-flag nil)
+;; (setq mumamo-chunk-coloring 'submode-colored
+;;       nxhtml-skip-welcome t
+;;       indent-region-mode t
+;;       rng-nxml-auto-validate-flag nil)
 
 ;; Associate modes with file extensions
 
@@ -156,5 +156,5 @@
             (unless (string-match "question" oddmuse-post)
               (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
 
-(provide 'starter-kit-misc)
-;;; starter-kit-misc.el ends here
+(provide 'misc)
+;;; misc.el ends here

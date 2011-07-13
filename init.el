@@ -46,7 +46,7 @@
      (end-of-buffer)
      (eval-print-last-sexp))))
 
-(setq el-get-sources '(color-theme yasnippet ruby-electric rinari magit yaml-mode paredit rhtml-mode))
+(setq el-get-sources '(color-theme yasnippet ruby-electric rinari magit yaml-mode paredit rhtml-mode) flymake-ruby)
 
 (el-get 'sync el-get-sources)
 (el-get 'wait)
@@ -65,16 +65,14 @@
 (require 'ansi-color)
 (require 'recentf)
 
-;; ;; Load up starter kit customizations
-
 (require 'defuns)
 (require 'keybindings)
-;; (require 'starter-kit-misc)
+(require 'misc)
 ;; (require 'starter-kit-registers)
 ;; (require 'starter-kit-eshell)
 ;; (require 'starter-kit-lisp)
 ;; (require 'starter-kit-perl)
-;; (require 'starter-kit-ruby)
+(require 'ruby)
 ;; (require 'starter-kit-js)
 
 ;; (regen-autoloads)
