@@ -46,9 +46,17 @@
      (end-of-buffer)
      (eval-print-last-sexp))))
 
-(setq el-get-sources '(color-theme yasnippet ruby-electric rinari magit yaml-mode paredit rhtml-mode) flymake-ruby)
+;; local sources
+(setq el-get-sources
+      '((:name rinari :compile nil))
+      )
 
-(el-get 'sync el-get-sources)
+(setq my-packages
+      (append
+       '(color-theme yasnippet ruby-electric magit yaml-mode paredit rhtml-mode flymake-ruby)
+       (mapcar 'el-get-source-name el-get-sources)))
+
+(el-get 'sync my-packages)
 (el-get 'wait)
 
 ;; Theme, fonts, ...
