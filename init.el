@@ -47,21 +47,21 @@
      (eval-print-last-sexp))))
 
 ;; local sources
-(setq el-get-sources
-      '((:name rinari :compile nil))
-      )
+(setq el-get-sources '(color-theme yasnippet ruby-electric magit yaml-mode paredit rhtml-mode flymake-ruby rinari))
 
-(setq my-packages
-      (append
-       '(color-theme yasnippet ruby-electric magit yaml-mode paredit rhtml-mode flymake-ruby)
-       (mapcar 'el-get-source-name el-get-sources)))
+;; (setq my-packages
+;;       (append
+;;        '(color-theme yasnippet ruby-electric magit yaml-mode paredit rhtml-mode flymake-ruby)
+;;        (mapcar 'el-get-source-name el-get-sources rvm-el)))
 
-(el-get 'sync my-packages)
+(el-get 'sync)
 (el-get 'wait)
 
 ;; Theme, fonts, ...
 (load-file "~/.emacs.d/elpa-to-submit/twilight.el")
 (color-theme-twilight)
+
+(yas/load-directory "~/.emacs.d/elpa-to-submit/snippets/")
 
 ;; These should be loaded on startup rather than autoloaded on demand
 ;; since they are likely to be used in every session
@@ -98,3 +98,15 @@
 ;;   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(el-get-byte-compile nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
