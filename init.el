@@ -24,7 +24,6 @@
 
 ;; to move
 (push "/usr/local/bin" exec-path)
-
 (set-face-attribute 'default nil :family "Anonymous Pro" :height 150)
 
 ;; MacOS X specific stuff
@@ -36,7 +35,6 @@
 (put 'downcase-region 'disabled nil)
 
 ;; el-get setup
-
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil t)
@@ -47,12 +45,24 @@
      (eval-print-last-sexp))))
 
 ;; local sources
-(setq el-get-sources '(color-theme yasnippet ruby-electric magit yaml-mode paredit rhtml-mode flymake-ruby rinari))
+(setq el-get-sources 
+      '((:name => yasnippet
+               :after => (lambda () 
+                           (setq yas/snippet-dirs "~/.emacs.d/snippets/")
+                           (yas/load-directory yas/snippet-dirs)
+                           (add-to-list 'yas/extra-mode-hooks 'html-mode-hook)
+                           )
+               )
+        (:name => rinari
+               :after => (lambda ()
+                           (add-hook 'rhtml-mode-hook
+                                     (lambda () (rinari-launch)))))
+        ))
 
-;; (setq my-packages
-;;       (append
-;;        '(color-theme yasnippet ruby-electric magit yaml-mode paredit rhtml-mode flymake-ruby)
-;;        (mapcar 'el-get-source-name el-get-sources rvm-el)))
+(setq my-packages
+      (append
+       '(color-theme ruby-electric magit yaml-mode paredit rhtml-mode flymake-ruby  rvm-el)
+       (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync)
 (el-get 'wait)
@@ -60,8 +70,6 @@
 ;; Theme, fonts, ...
 (load-file "~/.emacs.d/elpa-to-submit/twilight.el")
 (color-theme-twilight)
-
-(yas/load-directory "~/.emacs.d/elpa-to-submit/snippets/")
 
 ;; These should be loaded on startup rather than autoloaded on demand
 ;; since they are likely to be used in every session
@@ -76,11 +84,12 @@
 (require 'defuns)
 (require 'keybindings)
 (require 'misc)
+(require 'ruby)
 ;; (require 'starter-kit-registers)
 ;; (require 'starter-kit-eshell)
 ;; (require 'starter-kit-lisp)
 ;; (require 'starter-kit-perl)
-(require 'ruby)
+
 ;; (require 'starter-kit-js)
 
 ;; (regen-autoloads)
