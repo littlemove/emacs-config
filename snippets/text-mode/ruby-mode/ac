@@ -1,3 +1,0 @@
-#name : add_column  ... ,  ... 
-# --
-add_column ${table}, ${column}, ${type}

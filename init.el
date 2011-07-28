@@ -48,9 +48,8 @@
 (setq el-get-sources 
       '((:name => yasnippet
                :after => (lambda () 
-                           (setq yas/snippet-dirs "~/.emacs.d/snippets/")
-                           (yas/load-directory yas/snippet-dirs)
-                           (add-to-list 'yas/extra-mode-hooks 'html-mode-hook)
+                           (setq yas/snippet-dirs '("~/.emacs.d/snippets/" "~/.emacs.d/el-get/yasnippet/snippets/"))
+                           (mapc 'yas/load-directory yas/snippet-dirs)
                            )
                )
         (:name => rinari
