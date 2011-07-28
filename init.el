@@ -61,7 +61,7 @@
 
 (setq my-packages
       (append
-       '(color-theme ruby-electric magit yaml-mode paredit rhtml-mode flymake-ruby  rvm-el)
+       '(color-theme ruby-electric magit yaml-mode paredit rhtml-mode flymake-ruby  rvm)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync)
@@ -85,12 +85,9 @@
 (require 'keybindings)
 (require 'misc)
 (require 'ruby)
+(require 'lisp)
 ;; (require 'starter-kit-registers)
 ;; (require 'starter-kit-eshell)
-;; (require 'starter-kit-lisp)
-;; (require 'starter-kit-perl)
-
-;; (require 'starter-kit-js)
 
 ;; (regen-autoloads)
 ;; (load custom-file 'noerror)

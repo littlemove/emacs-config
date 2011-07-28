@@ -1,6 +1,6 @@
-;;; starter-kit-lisp.el --- Some helpful Lisp code
+;;; lisp.el --- Some helpful Lisp code
 ;;
-;; Part of the Emacs Starter Kit
+;; Most code from Emacs Starter Kit
 
 (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 (define-key lisp-mode-shared-map (kbd "C-c l") "lambda")
@@ -71,5 +71,5 @@
   '(define-key slime-repl-mode-map (kbd "C-c p")
      'slime-pprint-eval-last-expression))
 
-(provide 'starter-kit-lisp)
-;; starter-kit-lisp.el ends here
+(provide 'lisp)
+;; lisp.el ends here
