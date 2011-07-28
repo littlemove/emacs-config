@@ -68,8 +68,20 @@
 (el-get 'wait)
 
 ;; Theme, fonts, ...
-(load-file "~/.emacs.d/elpa-to-submit/twilight.el")
+(load-file "~/.emacs.d/color-themes/twilight.el")
 (color-theme-twilight)
+
+;; Flyspell related config
+(setq ispell-program-name "aspell")
+(setq ispell-list-command "list")
+
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+(dolist (hook '(change-log-mode-hook log-edit-mode-hook html-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode -1))))
+
+(global-set-key (kbd "<C-M-tab>") 'flyspell-auto-correct-word)
+
 
 ;; These should be loaded on startup rather than autoloaded on demand
 ;; since they are likely to be used in every session
@@ -88,20 +100,6 @@
 (require 'lisp)
 ;; (require 'starter-kit-registers)
 ;; (require 'starter-kit-eshell)
-
-;; (regen-autoloads)
-;; (load custom-file 'noerror)
-
-;; ;; You can keep system- or user-specific customizations here
-;; (setq system-specific-config (concat dotfiles-dir system-name ".el")
-;;       user-specific-config (concat dotfiles-dir user-login-name ".el")
-;;       user-specific-dir (concat dotfiles-dir user-login-name))
-;; (add-to-list 'load-path user-specific-dir)
-
-;; (if (file-exists-p system-specific-config) (load system-specific-config))
-;; (if (file-exists-p user-specific-config) (load user-specific-config))
-;; (if (file-exists-p user-specific-dir)
-;;   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
 
 ;;; init.el ends here
 (custom-set-variables
