@@ -44,27 +44,12 @@
      (end-of-buffer)
      (eval-print-last-sexp))))
 
-;; local sources
-(setq el-get-sources 
-      '((:name => yasnippet
-               :after => (lambda () 
-                           (setq yas/snippet-dirs '("~/.emacs.d/snippets/" "~/.emacs.d/el-get/yasnippet/snippets/"))
-                           (mapc 'yas/load-directory yas/snippet-dirs)
-                           )
-               )
-        (:name => rinari
-               :after => (lambda ()
-                           (add-hook 'rhtml-mode-hook
-                                     (lambda () (rinari-launch)))))
-        ))
-
-(setq my-packages
-      (append
-       '(color-theme ruby-electric magit yaml-mode paredit rhtml-mode flymake-ruby  rvm)
-       (mapcar 'el-get-source-name el-get-sources)))
-
+(setq el-get-user-package-directory "~/.emacs.d/inits")
+(setq el-get-sources '(color-theme ruby-electric inf-ruby magit yaml-mode paredit rhtml-mode flymake-ruby  rvm yasnippet rinari))
 (el-get 'sync)
 (el-get 'wait)
+
+(add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
 
 ;; Theme, fonts, ...
 (load-file "~/.emacs.d/color-themes/twilight.el")
