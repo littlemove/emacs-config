@@ -45,7 +45,7 @@
      (eval-print-last-sexp))))
 
 (setq el-get-user-package-directory "~/.emacs.d/inits")
-(setq el-get-sources '(color-theme css-mode ruby-electric inf-ruby magit yaml-mode paredit rhtml-mode flymake-ruby  rvm yasnippet rinari))
+(setq el-get-sources '(color-theme css-mode ruby-electric inf-ruby magit yaml-mode paredit rhtml-mode flymake-ruby  rvm yasnippet rinari ri-emacs auto-complete auto-complete-ruby))
 (el-get 'sync)
 (el-get 'wait)
 
@@ -82,6 +82,7 @@
 (require 'misc)
 (require 'ruby)
 (require 'lisp)
+(require 'rcodetools)
 ;; (require 'starter-kit-registers)
 ;; (require 'starter-kit-eshell)
 
