@@ -45,15 +45,14 @@
      (eval-print-last-sexp))))
 
 (setq el-get-user-package-directory "~/.emacs.d/inits")
-(setq el-get-sources '(color-theme css-mode ruby-electric inf-ruby magit yaml-mode paredit rhtml-mode flymake-ruby  rvm yasnippet rinari))
-(el-get 'sync)
-(el-get 'wait)
+(setq el-get-sources '(color-theme color-theme-twilight color-theme-railscasts css-mode ruby-electric inf-ruby magit yaml-mode paredit rhtml-mode flymake-ruby  rvm yasnippet rinari ri-emacs auto-complete auto-complete-ruby))
+(el-get 'sync el-get-sources)
+
 
 (add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
 
 ;; Theme, fonts, ...
-(load-file "~/.emacs.d/color-themes/twilight.el")
-(color-theme-twilight)
+(color-theme-railscasts)
 
 ;; Flyspell related config
 (setq ispell-program-name "aspell")
@@ -82,6 +81,7 @@
 (require 'misc)
 (require 'ruby)
 (require 'lisp)
+(require 'rcodetools)
 ;; (require 'starter-kit-registers)
 ;; (require 'starter-kit-eshell)
 
