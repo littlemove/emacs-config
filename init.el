@@ -44,6 +44,7 @@
      (end-of-buffer)
      (eval-print-last-sexp))))
 
+(setq el-get-byte-compile nil)
 (setq el-get-user-package-directory "~/.emacs.d/inits")
 (setq el-get-sources '(color-theme color-theme-twilight color-theme-railscasts css-mode ruby-electric inf-ruby magit yaml-mode paredit rhtml-mode flymake-ruby  rvm yasnippet rinari ri-emacs auto-complete auto-complete-ruby))
 (el-get 'sync el-get-sources)
@@ -57,6 +58,7 @@
 ;; Flyspell related config
 (setq ispell-program-name "aspell")
 (setq ispell-list-command "list")
+(setq ispell-local-dictionary "es")
 
 (dolist (hook '(text-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))
@@ -82,19 +84,8 @@
 (require 'ruby)
 (require 'lisp)
 (require 'rcodetools)
+
 ;; (require 'starter-kit-registers)
 ;; (require 'starter-kit-eshell)
 
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(el-get-byte-compile nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
