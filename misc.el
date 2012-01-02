@@ -106,10 +106,14 @@
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\(on\\)?$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\(on\\)?$" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
+(add-to-list 'auto-mode-alist '("bashrc" . sh-mode))
+(add-to-list 'auto-mode-alist '("bash_profile" . sh-mode))
+(add-to-list 'auto-mode-alist '("aliases" . sh-mode))
+(add-to-list 'auto-mode-alist '("completions" . sh-mode))
+(add-to-list 'auto-mode-alist '("gemrc" . ruby-mode))
+(add-to-list 'auto-mode-alist '("irbrc" . ruby-mode))
 
 (eval-after-load 'grep
   '(when (boundp 'grep-find-ignored-files)
