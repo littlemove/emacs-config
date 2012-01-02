@@ -85,6 +85,8 @@
 (require 'lisp)
 (require 'rcodetools)
 
+(server-start)
+
 ;; (require 'starter-kit-registers)
 ;; (require 'starter-kit-eshell)
 
