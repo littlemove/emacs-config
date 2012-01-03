@@ -1,37 +1,22 @@
-;;; init.el --- Where all the magic begins
-;;
-;; Part of the Emacs Starter Kit
-;;
-;; This is the first thing to get loaded.
-;;
-;; "Emacs outshines all other editing software in approximately the
-;; same way that the noonday sun does the stars. It is not just bigger
-;; and brighter; it simply makes everything else vanish."
-;; -Neal Stephenson, "In the Beginning was the Command Line"
+;;; init.el
 
 ;; Turn off mouse interface early in startup to avoid momentary display
-;; You really don't need these; trust me.
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ;; Load path etc.
-
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
 (add-to-list 'load-path dotfiles-dir)
-
-;; to move
 (push "/usr/local/bin" exec-path)
-(set-face-attribute 'default nil :family "Anonymous Pro" :height 150)
 
 ;; MacOS X specific stuff
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
-
 (put 'downcase-region 'disabled nil)
 
 ;; el-get setup
@@ -41,18 +26,26 @@
   (url-retrieve
    "https://github.com/dimitri/el-get/raw/master/el-get-install.el"
    (lambda (s)
-     (end-of-buffer)
-     (eval-print-last-sexp))))
+     (let (el-get-master-branch)
+       (end-of-buffer)
+       (eval-print-last-sexp)))))
 
 (setq el-get-byte-compile nil)
 (setq el-get-user-package-directory "~/.emacs.d/inits")
-(setq el-get-sources '(color-theme color-theme-twilight color-theme-railscasts css-mode ruby-electric inf-ruby magit yaml-mode paredit rhtml-mode flymake-ruby  rvm yasnippet rinari ri-emacs auto-complete auto-complete-ruby))
+(setq el-get-sources '(color-theme color-theme-twilight
+                                   color-theme-railscasts css-mode
+                                   ruby-electric inf-ruby magit
+                                   yaml-mode paredit rhtml-mode
+                                   flymake-ruby  rvm yasnippet rinari
+                                   ri-emacs auto-complete
+                                   auto-complete-ruby))
 (el-get 'sync el-get-sources)
 
 
-(add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
+;;(add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
 
 ;; Theme, fonts, ...
+(set-face-attribute 'default nil :family "Anonymous Pro" :height 150)
 (color-theme-railscasts)
 
 ;; Flyspell related config
