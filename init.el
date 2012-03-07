@@ -61,6 +61,15 @@
 
 (global-set-key (kbd "<C-M-tab>") 'flyspell-auto-correct-word)
 
+;; To move
+
+(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+
+;; Don't truncate
+(setq truncate-lines t)
+(setq truncate-partial-width-windows nil)
+
+;; to move end
 
 ;; These should be loaded on startup rather than autoloaded on demand
 ;; since they are likely to be used in every session
