@@ -37,12 +37,13 @@
                                    ruby-electric inf-ruby magit
                                    yaml-mode paredit rhtml-mode
                                    flymake-ruby  rvm yasnippet rinari
-                                   ri-emacs auto-complete
-                                   auto-complete-ruby))
+                                   auto-complete auto-complete-ruby
+                                   auto-complete-yasnippet ri-emacs markdown-mode
+                                   ))
 (el-get 'sync el-get-sources)
 
 
-;;(add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
+(add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
 
 ;; Theme, fonts, ...
 (set-face-attribute 'default nil :family "Anonymous Pro" :height 150)
