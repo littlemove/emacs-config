@@ -86,11 +86,9 @@
 (require 'misc)
 (require 'ruby)
 (require 'lisp)
+(require 'registers)
 (require 'rcodetools)
 
 (server-start)
-
-;; (require 'starter-kit-registers)
-;; (require 'starter-kit-eshell)
 
 ;;; init.el ends here
