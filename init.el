@@ -11,6 +11,7 @@
 
 (add-to-list 'load-path dotfiles-dir)
 (push "/usr/local/bin" exec-path)
+(push "~/bin" exec-path)
 
 ;; MacOS X specific stuff
 (setq mac-option-key-is-meta nil)
