@@ -18,6 +18,18 @@
 (setq mac-option-modifier nil)
 (put 'downcase-region 'disabled nil)
 
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when (< emacs-major-version 24)
+  (when
+      (load
+       (expand-file-name "~/.emacs.d/elpa/package.el"))
+    (package-initialize))
+  )
+
 ;; el-get setup
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
