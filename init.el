@@ -10,8 +10,6 @@
                     (or (buffer-file-name) load-file-name)))
 
 (add-to-list 'load-path dotfiles-dir)
-(push "/usr/local/bin" exec-path)
-(push "~/bin" exec-path)
 
 ;; MacOS X specific stuff
 (setq mac-option-key-is-meta nil)
@@ -88,8 +86,14 @@
 (require 'ruby)
 (require 'lisp)
 (require 'registers)
-(require 'rcodetools)
+(require 'exec-path)
 
-(server-start)
+;; make "<>" not matching delimiters in html-mode
+
+;; (eval-after-load "sgml-mode" '(progn
+;;                                 (modify-syntax-entry ?< "_" sgml-mode-syntax-table)
+;;                                 (modify-syntax-entry ?> "." sgml-mode-syntax-table)))
+
+
 
 ;;; init.el ends here
