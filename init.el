@@ -11,24 +11,17 @@
 
 (add-to-list 'load-path dotfiles-dir)
 
-;; MacOS X specific stuff
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
-(put 'downcase-region 'disabled nil)
+(require 'compat)
 
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-(when (< emacs-major-version 24)
-  (when
-      (load
-       (expand-file-name "~/.emacs.d/elpa/package.el"))
-    (package-initialize))
-  )
+;;----------------------------------------------------------------------------
+;; Which functionality to enable (use t or nil for true and false)
+;;----------------------------------------------------------------------------
+(setq *spell-check-support-enabled* nil)
+(setq *macbook-pro-support-enabled* t)
+(setq *is-a-mac* (eq system-type 'darwin))
+(setq *is-carbon-emacs* (and *is-a-mac* (eq window-system 'mac)))
+(setq *is-cocoa-emacs* (and *is-a-mac* (eq window-system 'ns)))
+
 
 ;; el-get setup
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -43,14 +36,28 @@
 
 (setq el-get-byte-compile nil)
 (setq el-get-user-package-directory "~/.emacs.d/inits")
-(setq el-get-sources '(color-theme color-theme-twilight
-                                   color-theme-railscasts css-mode
-                                   ruby-electric inf-ruby magit
-                                   yaml-mode paredit rhtml-mode
-                                   flymake-ruby  rvm yasnippet rinari
-                                   auto-complete auto-complete-ruby
-                                   auto-complete-yasnippet ri-emacs markdown-mode
-                                   ))
+(setq el-get-sources '(color-theme
+                       color-theme-twilight
+                       color-theme-railscasts
+                       css-mode
+                       ruby-electric
+                       inf-ruby magit
+                       yaml-mode
+                       paredit
+                       rhtml-mode
+                       flymake-ruby
+                       rvm
+                       yasnippet
+                       rinari
+                       auto-complete
+                       auto-complete-yasnippet
+                       markdown-mode
+                       ibuffer-vc
+                       package
+                       csv-mode
+                       csv-nav
+                       yari))
+
 (el-get 'sync el-get-sources)
 
 
@@ -99,6 +106,16 @@
 (require 'lisp)
 (require 'registers)
 (require 'exec-path)
+(require 'osx-keys)
+(require 'hippie-expand)
+;;(require 'isearch)
+
+;;----------------------------------------------------------------------------
+;; Allow access from emacsclient
+;;----------------------------------------------------------------------------
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 ;; make "<>" not matching delimiters in html-mode
 

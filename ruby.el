@@ -11,6 +11,7 @@
      (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
      (define-key ruby-mode-map (kbd "C-c l") "lambda")))
 
+(defalias 'ri 'yari)
 (global-set-key (kbd "C-h r") 'ri)
 
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
@@ -58,7 +59,7 @@ exec-to-string command, but it works and seems fast"
 ;;;; Hide/show blocks of code on ruby mode
 (defun ruby-custom-setup ()
   (add-to-list 'hs-special-modes-alist
-               '(ruby-mode "\\(def\\|do\\)""end""#"
+               '(ruby-mode "\\(def\\|do\\|should\\|context\\)""end""#"
                            (lambda (arg) (ruby-end-of-block))
                            nil
                            ))
@@ -80,6 +81,17 @@ exec-to-string command, but it works and seems fast"
             'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
 
 (require 'ruby-compilation-rspec)
+
+(defun update-rails-ctags ()
+  (interactive)
+  (let ((default-directory (or (rinari-root) default-directory)))
+    (shell-command (concat "ctags -a -e -f " rinari-tags-file-name " --tag-relative -R app lib vendor test"))))
+
+
+;;----------------------------------------------------------------------------
+;; Ruby - flymake
+;;----------------------------------------------------------------------------
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
 ;; TODO: set up ri
 ;; TODO: electric
