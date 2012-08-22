@@ -18,9 +18,6 @@
     (eval-after-load 'nxml-mode
       '(define-key nxml-mode-map (kbd "M-h") nil))
     (global-set-key (kbd "M-ˍ") 'ns-do-hide-others) ;; what describe-key reports
-    (global-set-key (kbd "M-c") 'ns-copy-including-secondary)
-    (global-set-key (kbd "M-v") 'ns-paste-secondary)))
-
+    (global-set-key (kbd "M-c") 'ns-copy-including-secondary)))
 
 (provide 'osx-keys)
-
