@@ -56,7 +56,8 @@
                        package
                        csv-mode
                        csv-nav
-                       yari))
+                       yari
+                       bundler))
 
 (el-get 'sync el-get-sources)
 
