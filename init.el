@@ -5,6 +5,13 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
+;;----------------------------------------------------------------------------
+;; Allow access from emacsclient
+;;----------------------------------------------------------------------------
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 ;; Load path etc.
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
@@ -22,6 +29,20 @@
 (setq *is-carbon-emacs* (and *is-a-mac* (eq window-system 'mac)))
 (setq *is-cocoa-emacs* (and *is-a-mac* (eq window-system 'ns)))
 
+(require 'osx-keys)
+(require 'exec-path)
+(require 'keybindings)
+(require 'defuns)
+(require 'misc)
+
+(require 'registers)
+
+(require 'cl)
+(require 'saveplace)
+(require 'ffap)
+(require 'uniquify)
+(require 'ansi-color)
+(require 'recentf)
 
 ;; el-get setup
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -81,42 +102,18 @@
 (global-set-key (kbd "<C-M-tab>") 'flyspell-auto-correct-word)
 
 ;; To move
-
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
 ;; Don't truncate
 (setq truncate-lines t)
 (setq truncate-partial-width-windows nil)
-
 ;; to move end
 
-;; These should be loaded on startup rather than autoloaded on demand
-;; since they are likely to be used in every session
-
-(require 'cl)
-(require 'saveplace)
-(require 'ffap)
-(require 'uniquify)
-(require 'ansi-color)
-(require 'recentf)
-
-(require 'defuns)
-(require 'keybindings)
-(require 'misc)
 (require 'ruby)
 (require 'lisp)
-(require 'registers)
-(require 'exec-path)
-(require 'osx-keys)
+
 (require 'hippie-expand)
 ;;(require 'isearch)
-
-;;----------------------------------------------------------------------------
-;; Allow access from emacsclient
-;;----------------------------------------------------------------------------
-(require 'server)
-(unless (server-running-p)
-  (server-start))
 
 ;; make "<>" not matching delimiters in html-mode
 
