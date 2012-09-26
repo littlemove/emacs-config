@@ -8,7 +8,11 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
     (setq exec-path (split-string path-from-shell path-separator))))
 
 (when (and *is-a-mac* window-system)
-  (set-exec-path-from-shell-PATH))
+  (set-exec-path-from-shell-PATH)
+  ;; Setting rbenv path
+(setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:" (getenv "HOME") "/.rbenv/bin:" (getenv "PATH")))
+(setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims") (cons (concat (getenv "HOME") "/.rbenv/bin") exec-path))))
+
 
 
 (provide 'exec-path)
