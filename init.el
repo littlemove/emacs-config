@@ -60,6 +60,7 @@
 (setq el-get-sources '(color-theme
                        color-theme-twilight
                        color-theme-railscasts
+                       color-theme-solarized
                        css-mode
                        ruby-electric
                        inf-ruby magit
@@ -67,7 +68,6 @@
                        paredit
                        rhtml-mode
                        flymake-ruby
-                       rvm
                        yasnippet
                        rinari
                        auto-complete
@@ -87,7 +87,7 @@
 
 ;; Theme, fonts, ...
 (set-face-attribute 'default nil :family "Anonymous Pro" :height 150)
-(color-theme-railscasts)
+(color-theme-solarized-dark)
 
 ;; Flyspell related config
 (setq ispell-program-name "aspell")
