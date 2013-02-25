@@ -71,8 +71,6 @@
                        flymake-ruby
                        yasnippet
                        rinari
-                       auto-complete
-                       auto-complete-yasnippet
                        markdown-mode
                        ibuffer-vc
                        package
@@ -114,6 +112,26 @@
 (require 'lisp)
 
 (require 'hippie-expand)
+
+;; Autocomplete
+(add-to-list 'load-path "~/.emacs.d/auto-complete/")
+(require 'auto-complete-config)
+(ac-config-default)
+
+;; Rsense
+(setq rsense-home "/usr/local/Cellar/rsense/0.3/libexec")
+(add-to-list 'load-path (concat rsense-home "/etc"))
+(require 'rsense)
+
+;; Rsense + Autocomplete
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (add-to-list 'ac-sources 'ac-source-rsense-method)
+            (add-to-list 'ac-sources 'ac-source-rsense-constant)))
+
+;; (add-to-list 'load-path "/Users/diego/.rvm/rubies/ruby-1.9.3-p125/share/emacs/site-lisp")
+;; (require 'el4r)
+;; (el4r-boot)
 ;;(require 'isearch)
 
 ;; make "<>" not matching delimiters in html-mode
@@ -121,7 +139,5 @@
 ;; (eval-after-load "sgml-mode" '(progn
 ;;                                 (modify-syntax-entry ?< "_" sgml-mode-syntax-table)
 ;;                                 (modify-syntax-entry ?> "." sgml-mode-syntax-table)))
-
-
 
 ;;; init.el ends here
