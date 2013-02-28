@@ -18,8 +18,6 @@
 
 (add-to-list 'load-path dotfiles-dir)
 
-(require 'compat)
-
 ;;----------------------------------------------------------------------------
 ;; Which functionality to enable (use t or nil for true and false)
 ;;----------------------------------------------------------------------------
