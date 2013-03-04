@@ -1,3 +1,6 @@
+(setenv "SHELL" "/usr/local/bin/zsh")
+(setenv "ESHELL" "/usr/local/bin/zsh")
+
 (defun set-exec-path-from-shell-PATH ()
   "Set up Emacs' `exec-path' and PATH environment variable to match that used by the user's shell.
 
