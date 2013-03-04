@@ -61,7 +61,8 @@
                        color-theme-solarized
                        css-mode
                        ruby-electric
-                       inf-ruby magit
+                       inf-ruby
+                       magit
                        yaml-mode
                        paredit
                        rhtml-mode
@@ -80,17 +81,14 @@
 
 (el-get 'sync el-get-sources)
 
-
-(add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
-
 ;; Theme, fonts, ...
 (set-face-attribute 'default nil :family "Anonymous Pro" :height 150)
 (color-theme-solarized-dark)
 
 ;; Flyspell related config
-(setq ispell-program-name "aspell")
-(setq ispell-list-command "list")
-(setq ispell-local-dictionary "es")
+(setq ispell-program-name "aspell"
+      ispell-list-command "list"
+      ispell-local-dictionary "es")
 
 (dolist (hook '(text-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))
@@ -103,8 +101,8 @@
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
 ;; Don't truncate
-(setq truncate-lines t)
-(setq truncate-partial-width-windows nil)
+(setq truncate-lines t
+      truncate-partial-width-windows nil)
 ;; to move end
 
 (require 'ruby)
