@@ -62,7 +62,6 @@
                        css-mode
                        ruby-electric
                        inf-ruby
-                       magit
                        yaml-mode
                        paredit
                        rhtml-mode
