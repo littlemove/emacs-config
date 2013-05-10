@@ -76,7 +76,8 @@
                        csv-mode
                        csv-nav
                        yari
-                       bundler))
+                       bundler
+                       dash-at-point))
 
 (el-get 'sync el-get-sources)
 
