@@ -28,6 +28,7 @@
 (setq *is-cocoa-emacs* (and *is-a-mac* (eq window-system 'ns)))
 
 (require 'osx-keys)
+
 (require 'exec-path)
 (require 'keybindings)
 (require 'defuns)
@@ -109,6 +110,12 @@
 (require 'lisp)
 
 (require 'hippie-expand)
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator " • ")
+(setq uniquify-after-kill-buffer-p t)
+(setq uniquify-ignore-buffers-re "^\\*")
 ;;(require 'isearch)
 
 ;; make "<>" not matching delimiters in html-mode
@@ -120,3 +127,15 @@
 
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(js-indent-level 2))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
