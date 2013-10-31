@@ -79,7 +79,8 @@
                        yari
                        bundler
                        dash-at-point
-                       web-mode))
+                       web-mode
+                       robe-mode))
 
 (el-get 'sync el-get-sources)
 
