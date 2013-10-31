@@ -78,7 +78,8 @@
                        csv-nav
                        yari
                        bundler
-                       dash-at-point))
+                       dash-at-point
+                       web-mode))
 
 (el-get 'sync el-get-sources)
 
