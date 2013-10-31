@@ -84,7 +84,7 @@
 (el-get 'sync el-get-sources)
 
 ;; Theme, fonts, ...
-(set-face-attribute 'default nil :family "Anonymous Pro" :height 150)
+(set-face-attribute 'default nil :family "Fira Mono" :height 140)
 (color-theme-solarized-dark)
 
 ;; Flyspell related config
