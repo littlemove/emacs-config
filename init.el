@@ -80,7 +80,9 @@
                        bundler
                        dash-at-point
                        web-mode
-                       robe-mode))
+                       robe-mode
+                       grizzl
+                       projectile))
 
 (el-get 'sync el-get-sources)
 
