@@ -81,8 +81,9 @@
                        dash-at-point
                        web-mode
                        robe-mode
-                       grizzl
-                       projectile))
+                       flx
+                       projectile
+                       magit))
 
 (el-get 'sync el-get-sources)
 
