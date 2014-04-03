@@ -8,6 +8,7 @@
      (ignore-errors (require 'ruby-compilation))
      (setq ruby-use-encoding-map nil)
      (add-hook 'ruby-mode-hook 'inf-ruby-keys)
+     (rbenv-use-corresponding)
      (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
      (define-key ruby-mode-map (kbd "C-c l") "lambda")))
 

@@ -83,7 +83,9 @@
                        robe-mode
                        flx
                        projectile
-                       magit))
+                       magit
+                       rbenv
+                       ido-vertical-mode))
 
 (el-get 'sync el-get-sources)
 
