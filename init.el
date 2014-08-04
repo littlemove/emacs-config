@@ -65,10 +65,8 @@
                        inf-ruby
                        yaml-mode
                        paredit
-                       rhtml-mode
                        flymake-ruby
                        yasnippet
-                       rinari
                        auto-complete
                        auto-complete-yasnippet
                        markdown-mode
@@ -83,6 +81,7 @@
                        robe-mode
                        flx
                        projectile
+                       projectile-rails
                        magit
                        rbenv
                        ido-vertical-mode))

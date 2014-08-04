@@ -76,8 +76,6 @@ exec-to-string command, but it works and seems fast"
 (add-hook 'ruby-mode-hook 'ruby-custom-setup)
 (add-hook 'ruby-mode-hook 'run-coding-hook)
 
-(require 'ruby-compilation-rspec)
-
 (defun update-rails-ctags ()
   (interactive)
   (let ((default-directory (or (rinari-root) default-directory)))
