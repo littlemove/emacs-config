@@ -21,3 +21,6 @@ session*
 tramp
 \#*
 history
+elisp/backups
+elisp/url/cookies
+elisp/ac-comphist.dat

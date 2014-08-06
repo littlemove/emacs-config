@@ -13,9 +13,7 @@
   (server-start))
 
 ;; Load path etc.
-(setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
-
+(setq dotfiles-dir (file-name-directory "~/.emacs.d/elisp/"))
 (add-to-list 'load-path dotfiles-dir)
 
 ;;----------------------------------------------------------------------------
@@ -55,12 +53,12 @@
        (eval-print-last-sexp)))))
 
 (setq el-get-byte-compile nil)
-(setq el-get-user-package-directory "~/.emacs.d/inits")
+(setq el-get-user-package-directory "~/.emacs.d/elisp/inits")
+
 (setq el-get-sources '(color-theme
                        color-theme-twilight
                        color-theme-railscasts
                        color-theme-solarized
-                       css-mode
                        ruby-electric
                        inf-ruby
                        yaml-mode
@@ -88,7 +86,7 @@
 
 (el-get 'sync el-get-sources)
 
-;; Theme, fonts, ...
+;; ;; Theme, fonts, ...
 (set-face-attribute 'default nil :family "Fira Mono" :height 140)
 (color-theme-solarized-dark)
 
