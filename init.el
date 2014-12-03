@@ -80,9 +80,11 @@
                        flx
                        projectile
                        projectile-rails
+                       ag
                        magit
                        rbenv
-                       ido-vertical-mode))
+                       ido-vertical-mode
+                       powerline))
 
 (el-get 'sync el-get-sources)
 
