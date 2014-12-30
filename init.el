@@ -55,7 +55,9 @@
 (setq el-get-byte-compile nil)
 (setq el-get-user-package-directory "~/.emacs.d/elisp/inits")
 
-(setq el-get-sources '(color-theme
+(setq el-get-sources '(helm
+                       helm-ag
+                       color-theme
                        color-theme-twilight
                        color-theme-railscasts
                        color-theme-solarized
