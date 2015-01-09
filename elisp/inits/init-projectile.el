@@ -3,4 +3,4 @@
 
 (projectile-global-mode)
 
-(define-key projectile-mode-map (kbd "C-c f") 'projectile-find-file)
+(define-key projectile-mode-map (kbd "C-c f") 'helm-projectile-find-file)
